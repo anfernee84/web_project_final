@@ -189,13 +189,12 @@ class NoteBookView(LoginRequiredMixin, ListView):
         tag_set = set()
         search_input = self.request.GET.get('search-area')
         filter_tags = get_tags_from_request(self.request.GET, self.request.user)
-        # NoteBook.objects.filter(tit)
+
         if filter_tags:
             context['notes'] = context['notes'].filter(tags__overlap=filter_tags)
 
         if search_input:
-            context['notes'] = context['notes'].filter(title__contains=search_input)
-            return context
+            context['notes'] = context['notes'].filter(title__icontains=search_input)
 
         for tag_item in NoteBook.objects.values_list('tags', flat=True).order_by('tags'):
             if tag_item:

@@ -99,10 +99,10 @@ class AddressBookView(LoginRequiredMixin, ListView):
         search_input = self.request.GET.get('search-area')
         b_day = self.request.GET.get('b-day')
         all_input = self.request.GET.get('all')
-
         if search_input:
             context['contacts'] = context['contacts'].filter(
                 Q(name__icontains=search_input) | Q(surname__icontains=search_input) | Q(phone__icontains=search_input))
+            context['is_empty'] = True
             return context
 
         if b_day:
@@ -494,7 +494,7 @@ def currency_converter(request):
     return render(request=request, template_name='currency.html', context={'data': data})
 
 
-# @login_required
+
 def file_filter(*args):
     EXTENDS = {
         'IMAGES': ['png', 'jpeg', 'jpg', 'bmp'],
@@ -530,14 +530,14 @@ def file_filter(*args):
     return FILE_LIST_BY_EXT
 
 
-# @login_required()
+@login_required
 def show_files(request, ext):
     user_id = request.user.id
     file_list = file_filter(user_id)
     return render(request, 'show_files.html', {'file_list': file_list[ext], "user_id": user_id})
 
 
-@login_required()
+@login_required
 def file_upload_view(request):
     success = False
     file_list = False
@@ -555,7 +555,7 @@ def file_upload_view(request):
     return render(request, 'files.html', {'success': success, 'file_list': file_list.keys()})
 
 
-# @login_required()
+@login_required
 def delete_file(request, ext):
     user_id = request.user.id
     print(user_id)
@@ -567,6 +567,6 @@ def delete_file(request, ext):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-# @login_required()
+@login_required
 def reference(request):
     return render(request=request, template_name='reference.html')

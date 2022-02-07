@@ -9,8 +9,9 @@ header,
     transition: 0.2s !important;
 }
 .anim-link:hover {
-    margin-left: 3px !important;
-    transform: scale(1.05) !important;
+    /* margin-left: 3px !important; */
+    font-size: 1.1em !important;
+    /* transform: scale(1.02) !important; */
     color: brown !important;
     transition: 0.2s !important;
 }

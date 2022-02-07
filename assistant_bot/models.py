@@ -33,7 +33,5 @@ class NoteBook(models.Model):
 
 
 fs = FileSystemStorage(location='/media')
-
-
 class GetListFile(models.Model):
     files = models.ImageField(storage=fs)

@@ -34,9 +34,9 @@ url_patterns = [
     path('weather/', show_weather, name='weather'),
     path('currency/', currency_converter, name='currency'),
 
-    path('files/', file_upload_view, name='files'),
-    path('show-files/<slug:ext>', show_files, name='show-files'),
+    path('files/', file_upload_view, name='files'),#
+    path('show-files/<slug:ext>', show_files, name='show-files'),#
 
     path('reference/', reference, name='reference'),
-    path('delete-file/<str:ext>', delete_file, name='delete-file'),
+    path('delete-file/<str:ext>', delete_file, name='delete-file'),#
 ]

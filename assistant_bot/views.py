@@ -91,9 +91,8 @@ class AddressBookView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(AddressBookView, self).get_context_data(**kwargs)
+        context['all_contacts'] = AddressBook.objects.all()
         context['contacts'] = context['contacts'].filter(user=self.request.user)
-        if context['contacts']:
-            context['is_empty'] = '0'
 
         today_date = datetime.date.today()
 
@@ -119,6 +118,9 @@ class AddressBookView(LoginRequiredMixin, ListView):
 
         if all_input is not None:
             context['contacts'] = AddressBook.objects.filter(user=self.request.user)
+
+        if context['contacts']:
+            context['is_empty'] = '0'
 
         return context
 
@@ -179,6 +181,7 @@ class NoteBookView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(NoteBookView, self).get_context_data(**kwargs)
+        context['all_notes'] = NoteBook.objects.all()
         context['notes'] = context['notes'].filter(user=self.request.user)
 
         tag_set = set()
@@ -196,6 +199,10 @@ class NoteBookView(LoginRequiredMixin, ListView):
                 for tag in tag_item:
                     tag_set.add(tag)
         context['filter_tags'] = tag_set
+
+        if context['notes']:
+            context['notes_exist'] = True
+
         return context
 
 

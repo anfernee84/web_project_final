@@ -62,7 +62,7 @@
                                 </div>
                             </form>
                         </li>
-                        {% if notes %}
+                        {% if notes_exist %}
                             {% for note in notes %}
                                 <li class="list-group-item border-0">
                                     <div class="card bg-white">
@@ -111,11 +111,21 @@
                                     </div>
                                 </li>
                             {% endfor %}
+
+                        {% elif all_notes %}
+                            <li class="list-group-item border-0">
+                                <div class="card bg-white">
+                                    <div class="card-body">
+                                        <h3 class="card-title text-center">No items with following parameters</h3>
+                                        <p class="card-text text-center">Try to <a href="{% url 'notes' %}">reset</a> filters it</p>
+                                    </div>
+                                </div>
+                            </li>
                         {% else %}
                             <li class="list-group-item border-0">
                                 <div class="card bg-white">
                                     <div class="card-body">
-                                        <h3 class="card-title text-center">No items available or no following parameters</h3>
+                                        <h3 class="card-title text-center">No items available</h3>
                                         <p class="card-text text-center">Try to <a href="{% url 'note_create' %}">add</a> it</p>
                                     </div>
                                 </div>

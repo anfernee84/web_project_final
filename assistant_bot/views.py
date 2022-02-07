@@ -536,7 +536,7 @@ def show_files(request, ext):
     return render(request, 'show_files.html', {'file_list': file_list[ext], "user_id": user_id})
 
 
-# @login_required()
+@login_required()
 def file_upload_view(request):
     success = False
     file_list = False

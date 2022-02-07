@@ -1,0 +1,32 @@
+{% extends 'homepage.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/files.css/' %}">
+<div class="container mb-4 mt-4">
+        <a href="{% url 'files' %}">
+            <button type="button" class="btn btn-dark">
+                Back to extends list
+            </button>
+        </a>
+
+    <div class="row justify-content-center">
+        <div style="margin-top: 20px; text-align: left;">
+            <ul class="list-group list-group-flush">
+                {% if file_list %}
+                    {% for file in file_list %}
+                        <li class="list-group-item d-flex" >
+                            <a style="display: inline-block; text-decoration: none;"
+                               class="link-dark anim-link col-10 pt-1" href="../media/{{user_id}}/{{ file }}">{{ file }}</a>
+                            <button class="btn btn-danger col-2 p-0">
+                                <a href="{% url 'delete-file' file %}"
+                                   class="w-100 link-light d-block p-1" style="text-decoration: none;">Delete</a>
+                            </button>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

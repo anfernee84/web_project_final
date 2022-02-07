@@ -1,0 +1,23 @@
+{% extends 'news_header.html' %}
+{% block body %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+crossorigin="anonymous">
+<body>
+<div class="jumbotron" style="color:black">
+    <h1 class="text-center">
+        Get the latest finance news on our application
+    </h1>
+</div>
+<div class="container; text-center">
+    {% for new, des, i, url in mylist %}
+        <h2><a style="color:black" href="{{ url }}">- {{ new }} -</a></h2>
+        {{ value|linebreaks }}
+        <p>{{ des }}</p>
+        {{ value|linebreaks }}
+        <img src="{{ i }}" alt="">
+
+        <hr style="height:10px">
+    {% endfor %}
+</div>
+</body>
+{% endblock %}

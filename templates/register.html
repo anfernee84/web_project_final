@@ -1,0 +1,61 @@
+{% extends 'homepage.html' %}
+{% block content %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    {% for msg in messages %}
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ msg }}</strong> Try again!
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ReqModal">
+            Show requirements
+            </button>
+
+        </div>
+        <div class="modal fade" id="ReqModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Password requirements</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li>Your password can’t be too similar to your other personal information.</li>
+                            <li>Your password must contain at least 8 characters.</li>
+                            <li>Your password can’t be a commonly used password.</li>
+                            <li>Your password can’t be entirely numeric.</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="container-fluid justify-content-between mt-5" style="width: 35%; height: auto; min-height: 60vh">
+        <form class="text-center border border-light p-5 justify-content-center" method="post" style="">
+
+            <p class="h4 mb-4">Register</p>
+            {% csrf_token %}
+            <input class="form-control mb-4" placeholder="Username" type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+
+            <input class="form-control mb-4" placeholder="Password" type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+            <input class="form-control mb-4" placeholder="Repeat password" type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+
+            <button class="btn btn-info btn-block my-4" type="submit">Register</button>
+
+            <p>Are you a member?
+                <a href="{% url 'login' %}">Login</a>
+            </p>
+        </form>
+    </div>
+{% endblock %}

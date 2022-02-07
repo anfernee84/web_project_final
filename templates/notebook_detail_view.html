@@ -1,0 +1,30 @@
+{% extends 'homepage.html' %}
+{% block content %}
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'notes' %}">View notes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'note_create' %}">Add note</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% load static %}
+<div class="container-fluid justify-content-center mt-2 mb-2" style="width: 400px; height: auto">
+    <div class="card justify-content-center">
+{#            <img class="card-img-top" src="{% static '/images/notes.png' %}" style="width: auto; height: 80%">#}
+        <div class="card-body">
+            <h2 class="card-title">{{ note.title }}</h2>
+            <p class="card-text">{{ note.description }}</p>
+            <ul class="list-group list-group-horizontal">
+                {% for item in note.tags %}
+                <li class="list-group-item">{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

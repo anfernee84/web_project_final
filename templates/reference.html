@@ -1,0 +1,69 @@
+{% extends 'homepage.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/reference.css' %}">
+<header class="header">
+    <h2>Instructions for using the application</h2>
+</header>
+<div class="address_book">
+    <h3>Address Book</h3>
+    <ul>
+        <li><p>...</p></li>
+        <li><p>...</p></li>
+        <li><p>...</p></li>
+    </ul>
+</div>
+<div class="note_book">
+    <h3>Note Book</h3>
+    <ul>
+        <li><p>...</p></li>
+        <li><p>...</p></li>
+        <li><p>...</p></li>
+    </ul>
+</div>
+<div class="news">
+    <h3>News</h3>
+    <ul>
+        <li><p>Information section of the application. In this section news feeds are divided into popular
+        categories: World news, Financial news, Sports news, Entertainment news and TechCrunch news.</p></li>
+        <li><p>Active news headlines with the ability to go to a detailed article on the main page of the source.</p></li>
+    </ul>
+</div>
+<div class="weather">
+    <h3>Weather</h3>
+    <ul>
+        <li><p>In the upper right corner of the News section, a brief weather forecast for your location is
+            constantly displayed <i>(the location is determined by the application automatically)</i>.</p></li>
+        <li><p>For a full weather forecast for your location, click on the "see more >>" link under the weather
+        forecast.</p></li>
+        <li><p>On the weather forecast page, it is possible to get a weather forecast for any city of the world
+        interests the user. Enter the name of the city of interest in "another location" and click on the search button.
+        </p></li>
+    </ul>
+</div>
+<div class="currency_converter">
+    <h3>Currency Converter</h3>
+    <ul>
+        <li><p>On the page of the Currency Converter, the scrolling line indicates the current exchange rates to the
+        base currency - the Euro.</p></li>
+        <li><p>The Currency Converter has a selections of all the valid world currencies.</p></li>
+        <li><p>To convert currencies, choose in the selection one currency, enter an amount and select another currency
+            in the next selection. To get the result, click "Convert".</p></li>
+    </ul>
+</div>
+<div class="files">
+    <h3>Files</h3>
+    <ul>
+        <li><p>...</p></li>
+        <li><p>...</p></li>
+        <li><p>...</p></li>
+    </ul>
+</div>
+<div class="warning">
+    <h2><b>Warning!</b></h2>
+    <ul>
+        <li><p>All application functions are available only to authorized users!</p></li>
+        <li><p>For authorization, follow the link "Login" or "Register" in the upper right corner of the home page.</p></li>
+    </ul>
+</div>
+{% endblock %}

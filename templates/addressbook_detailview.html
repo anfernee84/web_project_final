@@ -1,0 +1,29 @@
+{% extends 'homepage.html' %}
+{% block content %}
+
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacts' %}">View contacts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'addressbook' %}">Add contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid justify-content-center py-4" style="width: 400px; height: auto">
+        <div class="card justify-content-center">
+            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" style="width: auto; height: 80%">
+            <div class="card-body">
+                <h2 class="card-title">{{ contact.name }} {{ contact.surname }}</h2>
+                <p class="card-text">Phone: {{ contact.phone }}<br></p>
+                <p class="card-text">Email: {{ contact.email }}</p>
+                <p class="card-text">Address: {{ contact.street }}</p>
+                <p class="card-text">Birthday: {{ contact.birthday }}</p>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'homepage.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/news_header.css' %}">
+
+    <nav class="navbar navbar-light bg-faded sticky">
+        <a class="navbar-brand" href="/news">World</a>
+        <a class="navbar-brand" href="/finance">Finance</a>
+        <a class="navbar-brand" href="/sport">Sports</a>
+        <a class="navbar-brand" href="/entertainment">Entertainment</a>
+        <a class="navbar-brand" href="/techcrunch">TechCrunch</a>
+        <div>
+            <h4>{{ data.name }}, {{ data.temp_c }} °C, {{ data.temp_f}} °F</h4>
+            <a href="/weather" style="color:black; font-size:12px">see more >></a>
+        </div>
+    </nav>
+
+<body>
+
+    {% block body %}
+
+    {% endblock %}
+
+</body>
+
+{% endblock %}

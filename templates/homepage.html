@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static '/js/dj_func.js' %}"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static '/images/chatbot.png' %}" width="40" ></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'homepage' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Address book</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'notes' %}">Notes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'currency' %}">Currency Converter</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'files' %}">Files</a></li>
+                </ul>
+            </div>
+            <div class="d-flex">
+                <ul class="navbar-nav me-auto">
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<main>
+    {% block content %}
+        <div class="bg-image d-flex justify-content-center align-items-center"
+        style="background-image: url(https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80);
+            height: 100vh;">
+            <h1 class="text-dark" style="font-family: 'Roboto Thin',ui-serif ">Assistant bot</h1>
+        </div>
+    {% endblock %}
+</main>
+
+<div class="my-0 p-2 bg-dark text-white text-center fixed">
+    <div class="container text-center text-md-left mt-">
+
+        <!-- Grid row -->
+        <div class="row mt-3">
+
+          <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase font-weight-bold">Company name</h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit {{ request.data }}</p>
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p><a href="#!">Your Account</a></p>
+                <p><a href="{% url 'reference' %}">Help/Reference</a></p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p><i class="fas fa-home mr-3"></i>Mechnykova st. 2, Kyiv, 01133, Ukraine</p>
+                <p><i class="fas fa-envelope mr-3"></i> support@assistant.bot.com</p>
+                <p><i class="fas fa-phone mr-3"></i>+380(44)555-77-99</p>
+                <p><i class="fas fa-print mr-3"></i>0-800-555-777</p>
+            </div>
+            <!-- Grid column -->
+        </div>
+    <!-- Grid row -->
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2022 Copyright:<a href=""> Robot-app</a></div>
+</div>
+</body>
+</html>

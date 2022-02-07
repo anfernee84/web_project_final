@@ -1,0 +1,43 @@
+{% extends 'homepage.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/files.css/' %}">
+<div class="container mb-4 mt-4">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1 class="mt-2">Upload Files</h1>
+            <hr class="mt-0 mb-4">
+            <!-- Upload form. Note enctype attribute! -->
+            <form method="post" enctype="multipart/form-data" class="row g-3">
+                {% csrf_token %}
+                <div class="col-auto">
+                    <input class="form-control" type="file" name="document">
+                </div>
+                <div class="col-auto">
+                    <input class="btn btn-primary mb-3" type="submit" value="Upload file">
+                </div>
+                {% if success %}
+                <div class="col-auto">
+                    {{ success }}
+                </div>
+                {% endif %}
+            </form>
+        </div>
+
+        <div class="col-8">
+            <h3 class="block">Downloaded files</h3>
+            <hr class="block">
+            <div class="btn-group container" role="group" aria-label="Basic example">
+                {% if file_list %}
+                    {% for file in file_list %}
+                        <button type="button" class="btn btn-secondary col-md-2 p-0" style="margin: 0 5px;">
+                            <a style="text-decoration: none;" class="link-light d-block p-1"
+                               href="{% url 'show-files' file %}">{{ file }}</a></button>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

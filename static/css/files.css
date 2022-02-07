@@ -1,0 +1,20 @@
+html,
+body,
+header,
+.view {
+    height: 100%;
+    background: linear-gradient(0deg, rgb(75, 75, 75) 0%, rgba(198,224,250,1) 100%);
+}
+.anim-link {
+    transition: 0.2s !important;
+}
+.anim-link:hover {
+    margin-left: 3px !important;
+    transform: scale(1.05) !important;
+    color: brown !important;
+    transition: 0.2s !important;
+}
+
+main {
+    height: 63.3%;
+}

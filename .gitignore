@@ -1,3 +1,4 @@
 .idea
 media
 /assistant_bot/migrations
+/assistant_bot/__pycache__

@@ -414,7 +414,7 @@ def show_weather(request):
         'visibility_m': (weather_data['visibility'] / 1609).__round__(1),
         'pressure': weather_data['main']['pressure'],
         'humidity': weather_data['main']['humidity'],
-        'dt': datetime.now().date().ctime().replace(' 00:00:00', ',')
+        'dt': datetime.datetime.now().date().ctime().replace(' 00:00:00', ',')
     }
     if request.method == 'POST':
         weather_url = urllib.request.urlopen(
@@ -434,7 +434,7 @@ def show_weather(request):
             'visibility_m': (weather_data['visibility'] / 1609).__round__(1),
             'pressure': weather_data['main']['pressure'],
             'humidity': weather_data['main']['humidity'],
-            'dt': datetime.now().date().ctime().replace(' 00:00:00', ',')
+            'dt': datetime.datetime.now().date().ctime().replace(' 00:00:00', ',')
         }
         return render(request=request, template_name='weather_page.html', context={'data': data})
     return render(request=request, template_name='weather_page.html', context={'data': data})

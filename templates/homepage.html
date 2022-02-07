@@ -13,8 +13,10 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
+
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
+                    {% if request.user.is_authenticated %}
                     <li class="nav-item"><a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static '/images/chatbot.png' %}" width="40" ></a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'homepage' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Address book</a></li>
@@ -22,8 +24,10 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">News</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'currency' %}">Currency Converter</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'files' %}">Files</a></li>
+                    {% endif %}
                 </ul>
             </div>
+
             <div class="d-flex">
                 <ul class="navbar-nav me-auto">
                     {% if request.user.is_authenticated %}

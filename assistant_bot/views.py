@@ -103,7 +103,7 @@ class AddressBookView(LoginRequiredMixin, ListView):
 
         if search_input:
             context['contacts'] = context['contacts'].filter(
-                Q(name__startswith=search_input) | Q(surname__startswith=search_input))
+                Q(name__icontains=search_input) | Q(surname__icontains=search_input) | Q(phone__icontains=search_input))
             return context
 
         if b_day:
@@ -155,7 +155,7 @@ class NoteBookCreate(CreateView):
         tags = form.instance.tags
         form.instance.user = self.request.user
         if tags:
-            form.instance.tags = split(r'[,;+= ]', tags[0])
+            form.instance.tags = list(set(split(r'[,;+= ]', tags[0])))
         return super(NoteBookCreate, self).form_valid(form)
 
 
@@ -163,11 +163,6 @@ class NoteBookDetail(LoginRequiredMixin, DetailView):
     model = NoteBook
     template_name = 'notebook_detail_view.html'
     context_object_name = 'note'
-
-    def get_context_data(self, **kwargs):
-        context = super(NoteBookDetail, self).get_context_data(**kwargs)
-
-        return context
 
 
 class NoteBookUpdate(LoginRequiredMixin, UpdateView):

@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{% static '/js/dj_func.js' %}"></script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
 
@@ -51,7 +51,7 @@
     {% endblock %}
 </main>
 
-<div class="my-0 p-2 bg-dark text-white text-center fixed">
+<div class="mt-auto bg-dark text-white text-center">
     <div class="container text-center text-md-left mt-">
 
         <!-- Grid row -->
@@ -90,7 +90,7 @@
     <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2022 Copyright:<a href="{%  url 'homepage' %}"> Robot-app</a></div>
+    <div class="footer-copyright text-center">© 2022 Copyright:<a href="{%  url 'homepage' %}"> Robot-app</a></div>
 </div>
 </body>
 </html>

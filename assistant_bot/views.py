@@ -48,7 +48,7 @@ class CustomLoginView(LoginView):
         return reverse_lazy('homepage')
 
     def form_invalid(self, form):
-        messages.success(self.request, 'Incorrect password or login')
+        messages.success(self.request, 'Incorrect password or login!')
         return super(CustomLoginView, self).form_invalid(form)
 
 
@@ -65,7 +65,7 @@ class RegisterPage(FormView):
         return super(RegisterPage, self).form_valid(form)
 
     def form_invalid(self, form):
-        messages.success(self.request, 'Your password is too common!')
+        messages.success(self.request, 'Your password is too common or is incorrect!')
         return super(RegisterPage, self).form_invalid(form)
 
 

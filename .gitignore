@@ -1,5 +1,5 @@
 .idea
-media
+/media
 /assistant_bot/migrations
 /assistant_bot/__pycache__
 /Test_asbot/settings.py

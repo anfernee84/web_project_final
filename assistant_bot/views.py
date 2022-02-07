@@ -197,7 +197,7 @@ class NoteBookView(LoginRequiredMixin, ListView):
             context['notes'] = context['notes'].filter(title__contains=search_input)
             return context
 
-        for tag_item in context['notes'].objects.values_list('tags', flat=True).order_by('tags'):
+        for tag_item in context['notes'].values_list('tags', flat=True).order_by('tags'):
             if tag_item:
                 for tag in tag_item:
                     tag_set.add(tag)

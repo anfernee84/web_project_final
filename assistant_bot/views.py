@@ -102,7 +102,8 @@ class AddressBookView(LoginRequiredMixin, ListView):
         if search_input:
             context['contacts'] = context['contacts'].filter(
                 Q(name__icontains=search_input) | Q(surname__icontains=search_input) | Q(phone__icontains=search_input))
-            context['is_empty'] = True
+            if context['contacts']:
+                context['is_empty'] = True
             return context
 
         if b_day:

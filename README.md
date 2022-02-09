@@ -14,7 +14,7 @@ docker-compose build
 ```
 and
 ```
-docker-compose run -dp8000:8000 web
+docker-compose run -dp 8000:8000 web
 ```
 2. Download ZIP. Download apllication zip file from repository, unpack it and copy.
 

@@ -8,7 +8,15 @@ The "Personal Assistant" application is designed as an everyday helper applicati
 - **Upload files.** The user's ability to upload and store files. The application automatically sorts files by type and stores them in separate folders.
 ## "Personal Assistant" install guide
 ### Install application "Personal Assistant"
-*Instruction for install app.*
+1. Using Docker. Download `docker_version.zip` and unpack archieve folder. Run by 2 commands:
+```
+docker-compose build
+```
+and
+```
+docker-compose run -dp8000:8000 web
+```
+2. Download ZIP. Download apllication zip file from repository, unpack it and copy.
 
 ### Install Pipenv
 Pipenv is a new popular way of automatically creating a 'virtualenv' for the project. It creates Pipfile and Pipfile.lock.\
